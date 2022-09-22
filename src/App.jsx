@@ -1,19 +1,19 @@
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes } from "react-router-dom";
 
-import Auth from './pages/Auth'
-import Login from './pages/Auth/Login'
-import Register from './pages/Auth/Register'
-import RegisterEmail from './pages/Auth/RegisterEmail'
-import Detail from './pages/Board/Detail'
-import TextEditor from './pages/Board/TextEditor'
-import ListSearch from './pages/Board/ListSearch'
-import Home from './pages/Home'
-import ModuleList from './pages/Manage/ModuleList'
-import ModuleDetail from './pages/Manage/ModuleDetail'
-import AccessList from './pages/Manage/AccessList'
-import AccessDeatil from './pages/Manage/AccessDetail'
-import AdminPage from './pages/Manage/AdminPage'
-import CallContent from './pages/Board/Detail'
+import Auth from "./pages/Auth";
+import Login from "./pages/Auth/Login";
+import Register from "./pages/Auth/Register";
+import RegisterEmail from "./pages/Auth/RegisterEmail";
+import Detail from "./pages/Board/Detail";
+import TextEditor from "./pages/Board/TextEditor";
+import ListSearch from "./pages/Board/ListSearch";
+import Home from "./pages/Home";
+import ModuleList from "./pages/Manage/ModuleList";
+import ModuleDetail from "./pages/Manage/ModuleDetail";
+import AccessList from "./pages/Manage/AccessList";
+import AccessDeatil from "./pages/Manage/AccessDetail";
+import AdminPage from "./pages/Manage/AdminPage";
+import CallContent from "./pages/Board/Detail";
 
 export default function App() {
   return (
@@ -34,5 +34,5 @@ export default function App() {
         <Route path="/manage/access/:id" element={<AccessDeatil />} />
       </Routes>
     </div>
-  )
+  );
 }

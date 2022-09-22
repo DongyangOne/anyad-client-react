@@ -1,11 +1,10 @@
-import { Link } from 'react-router-dom'
-import '../../../styles/auth.scss'
+import { Link } from "react-router-dom";
+import "../../../styles/auth.scss";
 export default function Auth() {
   return (
     <div>
-      <title>Document</title>
       <div className="blue_box">
-        <Link to={'/'}>
+        <Link to={"/"}>
           <p className="bluebox_anyad">ANYAD</p>
         </Link>
       </div>
@@ -20,15 +19,15 @@ export default function Auth() {
             <div className="line1" />
             <p className="or">또는</p>
             <div className="line2" />
-            <Link to={'/auth/login'}>
+            <Link to={"/auth/login"}>
               <button className="anyad">ANYAD 로그인</button>
             </Link>
-            <Link to={'/auth/register/email'}>
+            <Link to={"/auth/register/email"}>
               <button className="anyad">ANYAD 회원가입</button>
             </Link>
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }

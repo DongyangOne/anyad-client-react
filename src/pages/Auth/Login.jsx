@@ -1,34 +1,34 @@
-import { Link } from 'react-router-dom'
-import axiosC from '../../../config/AxiosC'
-import { useNavigate } from 'react-router-dom'
-import { useInput, useLogin, useNull } from '../../util/common'
-import '../../../styles/login.scss'
+import { Link } from "react-router-dom";
+import axiosC from "../../../config/AxiosC";
+import { useNavigate } from "react-router-dom";
+import { useInput, useLogin, useNull } from "../../util/common";
+import "../../../styles/login.scss";
 
 export default function Login() {
-  const navigate = useNavigate()
-  const id = useInput()
-  const pw = useInput()
+  const navigate = useNavigate();
+  const id = useInput();
+  const pw = useInput();
 
-  const callApi = async () => {
-    if (!useNull([id.item, pw.item])) return alert('Enter ID, PW')
-    const config = {
-      url: 'http://localhost:8000/api/auth',
-      method: 'post',
-      data: {
-        email: id.item,
-        pw: pw.item,
-      },
-    }
-    const { result, info, token } = await (await axiosC(config)).data
-    if (!result) return alert('ERROR')
-    useLogin(info, token)
-    navigate('/')
-  }
+  // const callApi = async () => {
+  //   if (!useNull([id.item, pw.item])) return alert('Enter ID, PW')
+  //   const config = {
+  //     url: 'http://localhost:8000/api/auth',
+  //     method: 'post',
+  //     data: {
+  //       email: id.item,
+  //       pw: pw.item,
+  //     },
+  //   }
+  //   const { result, info, token } = await (await axiosC(config)).data
+  //   if (!result) return alert('ERROR')
+  //   useLogin(info, token)
+  //   navigate('/')
+  // }
 
   return (
     <div>
       <div className="blue_box">
-        <Link to={'/'}>
+        <Link to={"/"}>
           <p className="bluebox_anyad">ANYAD</p>
         </Link>
       </div>
@@ -60,5 +60,5 @@ export default function Login() {
         </div>
       </div>
     </div>
-  )
+  );
 }

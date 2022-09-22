@@ -1,14 +1,14 @@
-import { useState } from 'react'
-import { CKEditor } from '@ckeditor/ckeditor5-react'
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
-import { getCookie } from '../../../config/Cookie'
-import { useParams } from 'react-router-dom'
+import { useState } from "react";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import { getCookie } from "../../../config/Cookie";
+import { useParams } from "react-router-dom";
 
 export default function TextEditor() {
-  const [text, setText] = useState()
-  const [title, setTItle] = useState()
-  const [price, setPrice] = useState()
-  const { id } = useParams()
+  const [text, setText] = useState();
+  const [title, setTItle] = useState();
+  const [price, setPrice] = useState();
+  const { id } = useParams();
   // const [image, setImage] = useState({
   //   image_file: '',
   //   preview_URL: '',
@@ -18,27 +18,27 @@ export default function TextEditor() {
   // })
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    const formData = new FormData()
-    formData.append('image', e.target.image.files[0])
-    formData.append('text', text)
-    formData.append('title', title)
-    formData.append('price', price)
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("image", e.target.image.files[0]);
+    formData.append("text", text);
+    formData.append("title", title);
+    formData.append("price", price);
 
     try {
       await fetch(`http://localhost:8000/api/board/${id}`, {
-        method: 'post',
+        method: "post",
         body: formData,
         headers: {
-          accessToken: getCookie('accessToken'),
+          accessToken: getCookie("accessToken"),
         },
       })
         .then((res) => res.json())
-        .then((data) => window.location.replace('/'))
+        .then((data) => window.location.replace("/"));
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
-  }
+  };
 
   // const saveImage = (e) => {
   //   e.preventDefault()
@@ -73,8 +73,8 @@ export default function TextEditor() {
           editor={ClassicEditor}
           data="<p>Hello world</p>"
           onChange={(event, editor) => {
-            const data = editor.getData().replace(/<(\/p|p)([^>]*)>/gi, '')
-            setText(data)
+            const data = editor.getData().replace(/<(\/p|p)([^>]*)>/gi, "");
+            setText(data);
           }}
         />
         <button type="submit">게시글 추가</button>
@@ -89,5 +89,5 @@ export default function TextEditor() {
         </div> */}
       </div>
     </div>
-  )
+  );
 }

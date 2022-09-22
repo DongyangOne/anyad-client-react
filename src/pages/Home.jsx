@@ -1,28 +1,28 @@
-import HomeHeader from '../components/HomeHeader'
-import '../../styles/home.scss'
-import { useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import AxiosC from '../../config/AxiosC'
+import HomeHeader from "../components/HomeHeader";
+import "../../styles/home.scss";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import AxiosC from "../../config/AxiosC";
 
 export default function Home() {
-  const navigate = useNavigate()
-  const [keyword, setKeyword] = useState()
-  const [data, setData] = useState([])
+  const navigate = useNavigate();
+  const [keyword, setKeyword] = useState();
+  const [data, setData] = useState([]);
 
   const searchOnPress = (e) => {
-    if (e.key == 'Enter') keyword && navigate(`/board/${keyword}`)
-  }
+    if (e.key == "Enter") keyword && navigate(`/board/${keyword}`);
+  };
 
-  useEffect(() => {
-    AxiosC({
-      method: 'get',
-      url: 'http://localhost:8000/api/board',
-    }).then((res) => {
-      res.data.result && setData(() => res.data.data)
-    })
-  }, [])
+  // useEffect(() => {
+  //   AxiosC({
+  //     method: 'get',
+  //     url: 'http://localhost:8000/api/board',
+  //   }).then((res) => {
+  //     res.data.result && setData(() => res.data.data)
+  //   })
+  // }, [])
 
-  console.log(data)
+  console.log(data);
 
   return (
     <div>
@@ -77,5 +77,5 @@ export default function Home() {
         </div>
       </div>
     </div>
-  )
+  );
 }

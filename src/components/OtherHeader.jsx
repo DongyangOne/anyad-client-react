@@ -1,32 +1,32 @@
-import { useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import { getCookie, removeCookie } from '../../config/Cookie'
-import '../../styles/header.scss'
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { getCookie, removeCookie } from "../../config/Cookie";
+import "../../styles/header.scss";
 
 export default function OtherHeader() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const [logined, setLogined] = useState(false)
-  const [keyword, setKeyword] = useState()
+  const [logined, setLogined] = useState(false);
+  const [keyword, setKeyword] = useState();
 
-  const clickLogout = () => {
-    console.log(logined1)
-  }
+  // const clickLogout = () => {
+  //   console.log(logined1);
+  // };
 
   useEffect(() => {
-    const token = getCookie('accessToken')
-    token ? setLogined(true) : setLogined(false)
-  })
+    const token = getCookie("accessToken");
+    token ? setLogined(true) : setLogined(false);
+  });
 
   const searchOnPress = (e) => {
-    if (e.key == 'Enter') keyword && navigate(`/board/${keyword}`)
-  }
+    if (e.key == "Enter") keyword && navigate(`/board/${keyword}`);
+  };
 
   return (
     <div id="header">
       <div id="alitem">
         <span></span>
-        <Link to={'/'}>
+        <Link to={"/"}>
           <h2 class="title">ANYAD</h2>
         </Link>
         <span></span>
@@ -47,17 +47,17 @@ export default function OtherHeader() {
       <div>
         {logined ? (
           <ul>
-            <Link to={'/manage'}>
-              <li>{JSON.parse(localStorage.getItem('info')).name}</li>
+            <Link to={"/manage"}>
+              <li>{JSON.parse(localStorage.getItem("info")).name}</li>
             </Link>
             <li onClick={clickLogout}>LOGOUT</li>
           </ul>
         ) : (
-          <Link to={'/auth'}>
+          <Link to={"/auth"}>
             <li>로그인</li>
           </Link>
         )}
       </div>
     </div>
-  )
+  );
 }

@@ -1,39 +1,39 @@
-import { Link, useNavigate } from 'react-router-dom'
-import '../../../styles/registeremail.scss'
-import axiosC from '../../../config/AxiosC'
-import { useCheck, useInput, useNull } from '../../util/common'
+import { Link, useNavigate } from "react-router-dom";
+import "../../../styles/registeremail.scss";
+import axiosC from "../../../config/AxiosC";
+import { useCheck, useInput, useNull } from "../../util/common";
 
 export default function RegisterEmail() {
-  const navigate = useNavigate()
-  const email = useInput()
-  const inputCode = useInput()
-  const serverCode = useInput()
+  const navigate = useNavigate();
+  const email = useInput();
+  const inputCode = useInput();
+  const serverCode = useInput();
 
-  const callApi = async () => {
-    if (!useNull([email])) return alert('FALSE')
-    const config = {
-      url: 'http://localhost:8000/api/auth/check',
-      method: 'post',
-      data: {
-        email: email.item,
-      },
-    }
-    const { code } = await (await axiosC(config)).data
-    if (!code) return alert('ERR')
-    alert('SEND CODE')
-    serverCode.setItem(code)
-  }
+  // const callApi = async () => {
+  //   if (!useNull([email])) return alert('FALSE')
+  //   const config = {
+  //     url: 'http://localhost:8000/api/auth/check',
+  //     method: 'post',
+  //     data: {
+  //       email: email.item,
+  //     },
+  //   }
+  //   const { code } = await (await axiosC(config)).data
+  //   if (!code) return alert('ERR')
+  //   alert('SEND CODE')
+  //   serverCode.setItem(code)
+  // }
 
   const checkCode = () => {
-    if (!useCheck(serverCode.item, inputCode.item)) return alert('FALSE')
-    localStorage.setItem('email', email.item)
-    navigate('/auth/register')
-  }
+    if (!useCheck(serverCode.item, inputCode.item)) return alert("FALSE");
+    localStorage.setItem("email", email.item);
+    navigate("/auth/register");
+  };
 
   return (
     <div>
       <div className="blue_box">
-        <Link to={'/'}>
+        <Link to={"/"}>
           <p className="bluebox_anyad">ANYAD</p>
         </Link>
       </div>
@@ -63,5 +63,5 @@ export default function RegisterEmail() {
         </div>
       </div>
     </div>
-  )
+  );
 }

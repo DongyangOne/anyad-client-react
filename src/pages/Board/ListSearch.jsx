@@ -1,24 +1,24 @@
-import axiosC from '../../../config/AxiosC'
-import { useEffect } from 'react'
-import { Link, useParams } from 'react-router-dom'
-import OtherHeader from '../../components/OtherHeader'
-import { useInput } from '../../util/common'
-import '../../../styles/home.scss'
+import axiosC from "../../../config/AxiosC";
+import { useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
+import OtherHeader from "../../components/OtherHeader";
+import { useInput } from "../../util/common";
+import "../../../styles/home.scss";
 
 export default function ListSearch() {
-  const { id } = useParams()
-  const boardList = useInput([])
+  const { id } = useParams();
+  const boardList = useInput([]);
 
-  useEffect(() => {
-    const callApi = async () => {
-      const url = 'http://localhost/api/board/search'
-      const config = { params: { keyword: id } }
-      const { data } = await (await axiosC.get(url, config)).data
-      boardList.setItem(data)
-    }
-    callApi()
-  }, [id])
-  console.log(boardList.item)
+  // useEffect(() => {
+  //   const callApi = async () => {
+  //     const url = 'http://localhost/api/board/search'
+  //     const config = { params: { keyword: id } }
+  //     const { data } = await (await axiosC.get(url, config)).data
+  //     boardList.setItem(data)
+  //   }
+  //   callApi()
+  // }, [id])
+  // console.log(boardList.item)
 
   return (
     <div>
@@ -44,5 +44,5 @@ export default function ListSearch() {
         </div>
       </div>
     </div>
-  )
+  );
 }

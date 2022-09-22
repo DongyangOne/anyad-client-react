@@ -1,9 +1,9 @@
-import '../../../styles/adminpage.scss'
-import OtherHeader from '../../components/OtherHeader'
-import Nav from './Nav'
+import "../../../styles/adminpage.scss";
+import OtherHeader from "../../components/OtherHeader";
+import Nav from "./Nav";
 
 export default function AdminPage() {
-  const info = JSON.parse(localStorage.getItem('info'))
+  const info = JSON.parse(localStorage.getItem("info"));
   return (
     <div className="admin_page">
       <OtherHeader />
@@ -35,5 +35,5 @@ export default function AdminPage() {
         </div>
       </div>
     </div>
-  )
+  );
 }

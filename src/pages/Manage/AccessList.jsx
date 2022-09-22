@@ -1,22 +1,22 @@
-import { useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import axiosC from '../../../config/AxiosC'
-import { useInput } from '../../util/common'
-import OtherHeader from '../../components/OtherHeader'
-import Nav from './Nav'
-import '../../../styles/access.scss'
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
+import axiosC from "../../../config/AxiosC";
+import { useInput } from "../../util/common";
+import OtherHeader from "../../components/OtherHeader";
+import Nav from "./Nav";
+import "../../../styles/access.scss";
 
 export default function AccessList() {
-  const manager = useInput([])
-  useEffect(() => {
-    const callApi = async () => {
-      const url = 'http://localhost:8000/api/access'
-      const { result, data } = await (await axiosC.get(url)).data
-      if (result) manager.setItem(data)
-      console.log(manager.item)
-    }
-    callApi()
-  }, [])
+  const manager = useInput([]);
+  // useEffect(() => {
+  //   const callApi = async () => {
+  //     const url = 'http://localhost:8000/api/access'
+  //     const { result, data } = await (await axiosC.get(url)).data
+  //     if (result) manager.setItem(data)
+  //     console.log(manager.item)
+  //   }
+  //   callApi()
+  // }, [])
   return (
     <div className="access_box">
       <OtherHeader />
@@ -44,5 +44,5 @@ export default function AccessList() {
         </div>
       </div>
     </div>
-  )
+  );
 }

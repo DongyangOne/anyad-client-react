@@ -1,36 +1,36 @@
-import axiosC from '../../../config/AxiosC'
-import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import '../../../styles/look.scss'
-import OtherHeader from '../../components/OtherHeader'
-import { useInput } from '../../util/common'
+import axiosC from "../../../config/AxiosC";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import "../../../styles/look.scss";
+import OtherHeader from "../../components/OtherHeader";
+import { useInput } from "../../util/common";
 
 export default function CallContent() {
-  const boardData = useInput()
-  const loading = useInput(true)
-  const { id } = useParams()
+  const boardData = useInput();
+  const loading = useInput(true);
+  const { id } = useParams();
 
-  useEffect(() => {
-    const callApi = async () => {
-      const url = `http://localhost:8000/api/board/${id}`
-      const { data } = await (await axiosC.get(url)).data
-      console.log(data)
-      boardData.setItem(() => data)
-      loading.setItem(() => false)
-    }
-    callApi()
-  }, [])
+  // useEffect(() => {
+  //   const callApi = async () => {
+  //     const url = `http://localhost:8000/api/board/${id}`
+  //     const { data } = await (await axiosC.get(url)).data
+  //     console.log(data)
+  //     boardData.setItem(() => data)
+  //     loading.setItem(() => false)
+  //   }
+  //   callApi()
+  // }, [])
 
-  const callBuy = async () => {
-    console.log(boardData.item.module_id)
-    const url = `http://localhost:8000/api/access/${boardData.item.module_id}`
-    console.log(url)
-    const { result } = await (await axiosC.patch(url)).data
-    console.log(result)
-    result ? alert('구매 완료') : alert('구매 실패')
-  }
+  // const callBuy = async () => {
+  //   console.log(boardData.item.module_id)
+  //   const url = `http://localhost:8000/api/access/${boardData.item.module_id}`
+  //   console.log(url)
+  //   const { result } = await (await axiosC.patch(url)).data
+  //   console.log(result)
+  //   result ? alert('구매 완료') : alert('구매 실패')
+  // }
 
-  if (loading.item) return null
+  if (loading.item) return null;
   return (
     <div className="board_detail">
       <OtherHeader />
@@ -73,5 +73,5 @@ export default function CallContent() {
         </div>
       </div>
     </div>
-  )
+  );
 }

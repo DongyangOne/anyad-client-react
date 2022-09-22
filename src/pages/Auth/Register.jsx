@@ -1,37 +1,37 @@
-import { Link } from 'react-router-dom'
-import '../../../styles/register.scss'
-import axiosC from '../../../config/AxiosC'
-import { useInput, useNull, useCheck } from '../../util/common'
-import { useNavigate } from 'react-router-dom'
+import { Link } from "react-router-dom";
+import "../../../styles/register.scss";
+import axiosC from "../../../config/AxiosC";
+import { useInput, useNull, useCheck } from "../../util/common";
+import { useNavigate } from "react-router-dom";
 
 export default function Register() {
-  const navigate = useNavigate()
-  const name = useInput()
-  const pw = useInput()
-  const pwc = useInput()
+  const navigate = useNavigate();
+  const name = useInput();
+  const pw = useInput();
+  const pwc = useInput();
 
-  const callApi = async () => {
-    if (!useNull([name.item, pw.item, pwc.item])) return alert('NULL FALSE')
-    if (!useCheck(pw.item, pwc.item)) return alert('CHECK FALSE')
-    const config = {
-      url: 'http://localhost:8000/api/auth/register',
-      method: 'post',
-      data: {
-        email: localStorage.getItem('email'),
-        pw: pw.item,
-        name: name.item,
-      },
-    }
-    const { result } = await (await axiosC(config)).data
-    if (!result) return alert('ERROR')
-    localStorage.removeItem('email')
-    navigate('/auth')
-  }
+  // const callApi = async () => {
+  //   if (!useNull([name.item, pw.item, pwc.item])) return alert('NULL FALSE')
+  //   if (!useCheck(pw.item, pwc.item)) return alert('CHECK FALSE')
+  //   const config = {
+  //     url: 'http://localhost:8000/api/auth/register',
+  //     method: 'post',
+  //     data: {
+  //       email: localStorage.getItem('email'),
+  //       pw: pw.item,
+  //       name: name.item,
+  //     },
+  //   }
+  //   const { result } = await (await axiosC(config)).data
+  //   if (!result) return alert('ERROR')
+  //   localStorage.removeItem('email')
+  //   navigate('/auth')
+  // }
 
   return (
     <div className="register_div">
       <div className="blue_box">
-        <Link to={'/'}>
+        <Link to={"/"}>
           <p className="bluebox_anyad">ANYAD</p>
         </Link>
       </div>
@@ -66,5 +66,5 @@ export default function Register() {
         </div>
       </div>
     </div>
-  )
+  );
 }

@@ -1,22 +1,22 @@
-import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-import axiosC from '../../../config/AxiosC'
-import Nav from './Nav'
-import '../../../styles/module.scss'
-import OtherHeader from '../../components/OtherHeader'
-import { useInput } from '../../util/common'
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import axiosC from "../../../config/AxiosC";
+import Nav from "./Nav";
+import "../../../styles/module.scss";
+import OtherHeader from "../../components/OtherHeader";
+import { useInput } from "../../util/common";
 
 export default function ModuleList() {
-  const module = useInput([])
+  const module = useInput([]);
 
-  useEffect(() => {
-    const callApi = async () => {
-      const url = 'http://localhost:8000/api/module'
-      const { result, data } = await (await axiosC.get(url)).data
-      if (result) module.setItem(data)
-    }
-    callApi()
-  }, [])
+  // useEffect(() => {
+  //   const callApi = async () => {
+  //     const url = 'http://localhost:8000/api/module'
+  //     const { result, data } = await (await axiosC.get(url)).data
+  //     if (result) module.setItem(data)
+  //   }
+  //   callApi()
+  // }, [])
   return (
     <div className="module_list">
       <OtherHeader />
@@ -46,5 +46,5 @@ export default function ModuleList() {
         </div>
       </div>
     </div>
-  )
+  );
 }
