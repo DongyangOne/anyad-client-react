@@ -1,0 +1,38 @@
+.access_box {
+  background-color: #efeff4;
+  width: 100%;
+  height: 1000px;
+
+  .access_div {
+    li {
+      list-style: none;
+      color: black;
+    }
+    margin-top: 50px;
+    width: 40%;
+    height: 700px;
+    background-color: white;
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .access_inBox {
+      width: 100%;
+      height: 80%;
+
+      .top {
+        text-align: center;
+        width: 100%;
+        height: 30%;
+        hr {
+          width: 80%;
+        }
+      }
+      .bottom {
+        hr {
+          width: 80%;
+        }
+      }
+    }
+  }
+}
