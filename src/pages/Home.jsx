@@ -10,17 +10,17 @@ export default function Home() {
   const [data, setData] = useState([]);
 
   const searchOnPress = (e) => {
-    if (e.key == "Enter") keyword && navigate(`/board/${keyword}`);
+    if (e.key == "Enter") keyword && navigate(`/board/search/${keyword}`);
   };
 
-  // useEffect(() => {
-  //   AxiosC({
-  //     method: 'get',
-  //     url: 'http://localhost:8000/api/board',
-  //   }).then((res) => {
-  //     res.data.result && setData(() => res.data.data)
-  //   })
-  // }, [])
+  useEffect(() => {
+    AxiosC({
+      method: "get",
+      url: "http://210.90.136.10:3000/api/board",
+    }).then((res) => {
+      res.data.result && setData(() => res.data.data);
+    });
+  }, []);
 
   console.log(data);
 
@@ -59,11 +59,11 @@ export default function Home() {
         <div className="wrap">
           <div className="wrap1">
             {data.map((item) => (
-              <Link to={`/board/detail/${item.id}`}>
+              <Link to={`/board/${item.id}`}>
                 <div className="board_div">
                   <div className="img_box2">
                     <img
-                      src={`http://localhost:8000/source/images/${item.image}`}
+                      src={`http://210.90.136.10:3000/source/images/${item.image}`}
                     />
                   </div>
                   <div className="text_box">

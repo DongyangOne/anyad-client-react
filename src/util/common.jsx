@@ -13,13 +13,13 @@ export function useCheck(a, b) {
   return true;
 }
 
-// export function useInput(init) {
-//   const [item, setItem] = useState(init);
-//   const onChange = (event) => {
-//     setItem(event.target.value);
-//   };
-//   return { item, onChange, setItem };
-// }
+export function useInput(init) {
+  const [item, setItem] = useState(init);
+  const onChange = (event) => {
+    setItem(event.target.value);
+  };
+  return { item, onChange, setItem };
+}
 
 export function useLogin(info, token) {
   localStorage.setItem("info", JSON.stringify(info));

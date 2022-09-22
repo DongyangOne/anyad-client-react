@@ -9,21 +9,25 @@ export default function Login() {
   const id = useInput();
   const pw = useInput();
 
-  // const callApi = async () => {
-  //   if (!useNull([id.item, pw.item])) return alert('Enter ID, PW')
-  //   const config = {
-  //     url: 'http://localhost:8000/api/auth',
-  //     method: 'post',
-  //     data: {
-  //       email: id.item,
-  //       pw: pw.item,
-  //     },
-  //   }
-  //   const { result, info, token } = await (await axiosC(config)).data
-  //   if (!result) return alert('ERROR')
-  //   useLogin(info, token)
-  //   navigate('/')
-  // }
+  const callApi = async () => {
+    if (!useNull([id.item, pw.item])) return alert("Enter ID, PW");
+    const config = {
+      url: "http://210.90.136.10:3000/api/user/local",
+      method: "post",
+      data: {
+        email: id.item,
+        password: pw.item,
+      },
+    };
+    try {
+      const res = await axiosC(config);
+      console.log(res);
+      // useLogin(info, token);
+      // navigate("/");
+    } catch {
+      if (!res) return alert("ERROR");
+    }
+  };
 
   return (
     <div>

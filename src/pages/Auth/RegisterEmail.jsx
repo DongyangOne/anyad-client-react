@@ -9,20 +9,20 @@ export default function RegisterEmail() {
   const inputCode = useInput();
   const serverCode = useInput();
 
-  // const callApi = async () => {
-  //   if (!useNull([email])) return alert('FALSE')
-  //   const config = {
-  //     url: 'http://localhost:8000/api/auth/check',
-  //     method: 'post',
-  //     data: {
-  //       email: email.item,
-  //     },
-  //   }
-  //   const { code } = await (await axiosC(config)).data
-  //   if (!code) return alert('ERR')
-  //   alert('SEND CODE')
-  //   serverCode.setItem(code)
-  // }
+  const callApi = async () => {
+    if (!useNull([email])) return alert("FALSE");
+    const config = {
+      url: "http://210.90.136.10:3000/api/user/sendmail",
+      method: "post",
+      data: {
+        email: email.item,
+      },
+    };
+    const { code } = await (await axiosC(config)).data;
+    if (!code) return alert("ERR");
+    alert("SEND CODE");
+    serverCode.setItem(code);
+  };
 
   const checkCode = () => {
     if (!useCheck(serverCode.item, inputCode.item)) return alert("FALSE");

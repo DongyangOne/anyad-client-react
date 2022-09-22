@@ -10,23 +10,27 @@ export default function Register() {
   const pw = useInput();
   const pwc = useInput();
 
-  // const callApi = async () => {
-  //   if (!useNull([name.item, pw.item, pwc.item])) return alert('NULL FALSE')
-  //   if (!useCheck(pw.item, pwc.item)) return alert('CHECK FALSE')
-  //   const config = {
-  //     url: 'http://localhost:8000/api/auth/register',
-  //     method: 'post',
-  //     data: {
-  //       email: localStorage.getItem('email'),
-  //       pw: pw.item,
-  //       name: name.item,
-  //     },
-  //   }
-  //   const { result } = await (await axiosC(config)).data
-  //   if (!result) return alert('ERROR')
-  //   localStorage.removeItem('email')
-  //   navigate('/auth')
-  // }
+  const callApi = async () => {
+    if (!useNull([name.item, pw.item, pwc.item])) return alert("NULL FALSE");
+    if (!useCheck(pw.item, pwc.item)) return alert("CHECK FALSE");
+    const config = {
+      url: "http://210.90.136.10:3000/api/user",
+      method: "post",
+      data: {
+        email: localStorage.getItem("email"),
+        password: pw.item,
+        name: name.item,
+      },
+    };
+    try {
+      const res = await axiosC(config).data;
+      localStorage.removeItem("email");
+      console.log("good ");
+      navigate("/auth");
+    } catch {
+      if (!res) return alert("ERROR");
+    }
+  };
 
   return (
     <div className="register_div">
