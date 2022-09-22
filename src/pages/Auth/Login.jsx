@@ -3,6 +3,7 @@ import axiosC from "../../../config/AxiosC";
 import { useNavigate } from "react-router-dom";
 import { useInput, useLogin, useNull } from "../../util/common";
 import "../../../styles/login.scss";
+import { setCookie } from "../../../config/Cookie";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -21,9 +22,17 @@ export default function Login() {
     };
     try {
       const res = await axiosC(config);
-      console.log(res);
+      localStorage.setItem(
+        "info",
+        JSON.stringify({
+          name: res.data.user.name,
+        })
+      );
+
+      //JSON.parse(localStorage.getItem("info")).name
+      setCookie("accessToken", res.data.token);
       // useLogin(info, token);
-      // navigate("/");
+      navigate("/");
     } catch {
       if (!res) return alert("ERROR");
     }
